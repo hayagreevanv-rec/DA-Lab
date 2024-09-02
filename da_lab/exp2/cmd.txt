@@ -1,0 +1,1 @@
+hadoop jar ~/da_lab/hadoop-streaming-3.3.6.jar -input /exp2/word_count.txt -output /exp2/output -mapper ~/da_lab/exp2/mapper.py -reducer ~/da_lab/exp2/reducer.py 

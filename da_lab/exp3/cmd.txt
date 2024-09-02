@@ -1,0 +1,6 @@
+hadoop jar ~/da_lab/exp3/hadoop-streaming-3.3.6.jar -input /weatherdata/dataset.txt -output /weatherdata/output -mapper ~/da_lab/exp3/mapper.py -reducer ~/da_lab/exp3/reducer.py
+
+cat dataset.txt | python mapper.py | sort -k1,1 | python reducer.py
+
+hdfs dfs -rm -r /weatherdata/output
+

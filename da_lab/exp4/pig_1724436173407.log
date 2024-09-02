@@ -1,0 +1,47 @@
+Pig Stack Trace
+---------------
+ERROR 6007: Unable to check name hdfs://localhost:9000/tmp/temp1953848810/tmp-197746201
+
+org.apache.pig.backend.hadoop.executionengine.JobCreationException: ERROR 2017: Internal error creating job configuration.
+	at org.apache.pig.backend.hadoop.executionengine.mapReduceLayer.JobControlCompiler.getJob(JobControlCompiler.java:1016)
+	at org.apache.pig.backend.hadoop.executionengine.mapReduceLayer.JobControlCompiler.compile(JobControlCompiler.java:323)
+	at org.apache.pig.backend.hadoop.executionengine.mapReduceLayer.MapReduceLauncher.launchPig(MapReduceLauncher.java:196)
+	at org.apache.pig.backend.hadoop.executionengine.HExecutionEngine.launchPig(HExecutionEngine.java:308)
+	at org.apache.pig.PigServer.launchPlan(PigServer.java:1474)
+	at org.apache.pig.PigServer.executeCompiledLogicalPlan(PigServer.java:1459)
+	at org.apache.pig.PigServer.execute(PigServer.java:1448)
+	at org.apache.pig.PigServer.executeBatch(PigServer.java:488)
+	at org.apache.pig.PigServer.executeBatch(PigServer.java:471)
+	at org.apache.pig.tools.grunt.GruntParser.executeBatch(GruntParser.java:172)
+	at org.apache.pig.tools.grunt.GruntParser.parseStopOnError(GruntParser.java:235)
+	at org.apache.pig.tools.grunt.GruntParser.parseStopOnError(GruntParser.java:206)
+	at org.apache.pig.tools.grunt.Grunt.exec(Grunt.java:81)
+	at org.apache.pig.Main.run(Main.java:630)
+	at org.apache.pig.Main.main(Main.java:176)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.apache.hadoop.util.RunJar.run(RunJar.java:328)
+	at org.apache.hadoop.util.RunJar.main(RunJar.java:241)
+Caused by: org.apache.pig.backend.datastorage.DataStorageException: ERROR 6007: Unable to check name hdfs://localhost:9000/tmp/temp1953848810/tmp-197746201
+	at org.apache.pig.backend.hadoop.datastorage.HDataStorage.isContainer(HDataStorage.java:207)
+	at org.apache.pig.backend.hadoop.datastorage.HDataStorage.asElement(HDataStorage.java:128)
+	at org.apache.pig.backend.hadoop.datastorage.HDataStorage.asElement(HDataStorage.java:144)
+	at org.apache.pig.impl.io.FileLocalizer.getTemporaryPath(FileLocalizer.java:551)
+	at org.apache.pig.impl.io.FileLocalizer.getTemporaryPath(FileLocalizer.java:545)
+	at org.apache.pig.backend.hadoop.executionengine.mapReduceLayer.JobControlCompiler.shipToHDFS(JobControlCompiler.java:1799)
+	at org.apache.pig.backend.hadoop.executionengine.mapReduceLayer.JobControlCompiler.putJarOnClassPathThroughDistributedCache(JobControlCompiler.java:1686)
+	at org.apache.pig.backend.hadoop.executionengine.mapReduceLayer.JobControlCompiler.getJob(JobControlCompiler.java:648)
+	... 20 more
+Caused by: java.io.IOException: Filesystem closed
+	at org.apache.hadoop.hdfs.DFSClient.checkOpen(DFSClient.java:494)
+	at org.apache.hadoop.hdfs.DFSClient.getFileInfo(DFSClient.java:1737)
+	at org.apache.hadoop.hdfs.DistributedFileSystem$29.doCall(DistributedFileSystem.java:1829)
+	at org.apache.hadoop.hdfs.DistributedFileSystem$29.doCall(DistributedFileSystem.java:1826)
+	at org.apache.hadoop.fs.FileSystemLinkResolver.resolve(FileSystemLinkResolver.java:81)
+	at org.apache.hadoop.hdfs.DistributedFileSystem.getFileStatus(DistributedFileSystem.java:1841)
+	at org.apache.hadoop.fs.FileSystem.exists(FileSystem.java:1862)
+	at org.apache.pig.backend.hadoop.datastorage.HDataStorage.isContainer(HDataStorage.java:200)
+	... 27 more
+================================================================================

@@ -1,0 +1,10 @@
+sudo dnf install jq
+jq . emp.json
+
+pip install pandas
+pip install hdfs
+
+hdfs dfs -mkdir /exp6/
+hdfs dfs -put emp.json /exp6/
+
+python process_data.py
